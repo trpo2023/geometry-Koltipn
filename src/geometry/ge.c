@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 
-
 #include "../libgeometry/ge_calc.h"
 
 #define MAX_INPUT_LENGTH 100
