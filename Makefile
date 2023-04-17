@@ -22,12 +22,12 @@ $(APP_OBJ): $(APP_DEPS)
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -o $@ $^
 
-$(GEOMETRY_OBJ): $(SRC_DIR)/geometry/ge.c
+$(GEOMETRY_OBJ): $(SRC_DIR)/geometry/ge.c | $(OBJ_DIR)/geometry
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-$(GEOMETRY_CALC_A): $(OBJ_DIR)/libgeometry/ge_calc.o
+$(GEOMETRY_CALC_A): $(OBJ_DIR)/libgeometry/ge_calc.o | $(OBJ_DIR)/libgeometry
 	ar rcs $@ $<
-$(GEOMETRY_CALC_OBJ): $(SRC_DIR)/libgeometry/ge_calc.c
+$(GEOMETRY_CALC_OBJ): $(SRC_DIR)/libgeometry/ge_calc.c | $(OBJ_DIR)/libgeometry
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
