@@ -1,5 +1,5 @@
-#include "../thirdparty/ctest.h"
 #include "../src/libgeometry/ge_calc.h"
+#include "../thirdparty/ctest.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

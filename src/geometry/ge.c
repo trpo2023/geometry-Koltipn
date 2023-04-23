@@ -1,8 +1,9 @@
+#include "../libgeometry/ge_calc.h"
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
 
-#include "../libgeometry/ge_calc.h"
+
 
 #define MAX_INPUT_LENGTH 100
 #define MAX_CIRCLES 10
