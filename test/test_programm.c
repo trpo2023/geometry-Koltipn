@@ -28,7 +28,7 @@ CTEST(circle_area, negative_radius)
 CTEST(circle_perimeter, correct_input)
 {
     const float radius = 5.0;
-    const float expected_perimeter = 31.415926;
+    const float expected_perimeter = 31.415928;
 
     const float result = circle_perimeter(radius);
 
