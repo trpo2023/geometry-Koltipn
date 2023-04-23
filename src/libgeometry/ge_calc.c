@@ -1,4 +1,4 @@
-#include "ge_calc.h"
+#include <libgeometry/ge_calc.h>
 #include <math.h>
 
 float circle_area(float r)
