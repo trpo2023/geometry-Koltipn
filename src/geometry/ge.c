@@ -1,6 +1,6 @@
+#include <math.h>
 #include <stdio.h>
 #include <string.h>
-#include <math.h>
 
 #include "../libgeometry/ge_calc.h"
 
@@ -16,7 +16,8 @@ int main()
     while (1) {
         printf("Enter the number of circles (1-10): ");
         fgets(input, MAX_INPUT_LENGTH, stdin);
-        if (sscanf(input, "%d", &num_circles) == 1 && num_circles >= 1 && num_circles <= MAX_CIRCLES) {
+        if (sscanf(input, "%d", &num_circles) == 1 && num_circles >= 1
+            && num_circles <= MAX_CIRCLES) {
             break;
         } else {
             printf("Error. Enter a number between 1 and 10.\n");
@@ -29,14 +30,20 @@ int main()
             printf("Enter circle %d (circle(x y,r)): ", i + 1);
             fgets(input, MAX_INPUT_LENGTH, stdin);
             float x_val, y_val, r_val;
-            if (sscanf(input, "circle(%f %f,%f)", &x_val, &y_val, &r_val) == 3) {
+            if (sscanf(input, "circle(%f %f,%f)", &x_val, &y_val, &r_val)
+                == 3) {
                 x[i] = x_val;
                 y[i] = y_val;
                 r[i] = r_val;
-                printf("Circle %d: x,y: (%.2f, %.2f), Radius: %.2f\n", i + 1, x[i], y[i], r[i]);
+                printf("Circle %d: x,y: (%.2f, %.2f), Radius: %.2f\n",
+                       i + 1,
+                       x[i],
+                       y[i],
+                       r[i]);
                 break;
             } else {
-                printf("Error. Please enter circle in the format 'circle(x y,r)'.\n");
+                printf("Error. Please enter circle in the format 'circle(x "
+                       "y,r)'.\n");
                 return 0;
             }
         }
@@ -45,7 +52,10 @@ int main()
     for (int i = 0; i < num_circles; i++) {
         float area = circle_area(r[i]);
         float perimeter = circle_perimeter(r[i]);
-        printf("\nCircle %d:\nArea: %f\nPerimeter: %f\n", i + 1, area, perimeter);
+        printf("\nCircle %d:\nArea: %f\nPerimeter: %f\n",
+               i + 1,
+               area,
+               perimeter);
     }
 
     for (int i = 0; i < num_circles - 1; i++) {
@@ -54,7 +64,7 @@ int main()
             if (distance <= r[i] + r[j]) {
                 printf("\nCircles %d and %d intersect.\n", i + 1, j + 1);
             } else {
-                 printf("\nCircles %d and %d do not intersect.\n", i + 1, j + 1);
+                printf("\nCircles %d and %d do not intersect.\n", i + 1, j + 1);
             }
         }
     }
