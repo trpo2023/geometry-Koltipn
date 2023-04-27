@@ -28,7 +28,7 @@ CTEST(circle_area, negative_radius)
 CTEST(circle_perimeter, correct_input)
 {
     const float radius = 5.0;
-    const float expected_perimeter = 31.415928;
+    const float expected_perimeter = 31.415926;
 
     const float result = circle_perimeter(radius);
 
@@ -48,12 +48,51 @@ CTEST(circle_perimeter, negative_radius)
 CTEST(input_test, correct_input)
 {
     char input[MAX_LEN];
-    strcpy(input, "circle(0 0,1.5)");
-    float c_x, c_y, c_r;
+    strcpy(input, "circle(4 2,10)");
 
-    ASSERT_EQUAL(3, sscanf(input, "circle(%f %f,%f)", &c_x, &c_y, &c_r));
-    ASSERT_EQUAL(0, strncmp(input, "circle(", 7));
-    ASSERT_EQUAL(0.0, c_x);
-    ASSERT_EQUAL(0.0, c_y);
-    ASSERT_EQUAL(1.5, c_r);
+    char inputs[1][MAX_LEN];
+    strcpy(inputs[0], input);
+
+    struct Circle circles[1];
+    int result = parser(1, inputs, circles);
+    ASSERT_EQUAL(0, result);
+}
+
+CTEST(input_test, incorrect_input)
+{
+    char input[MAX_LEN];
+    strcpy(input, "circle (228 1337, 1.5)");
+
+    char inputs[1][MAX_LEN];
+    strcpy(inputs[0], input);
+
+    struct Circle circles[1];
+    int result = parser(1, inputs, circles);
+    ASSERT_EQUAL(1, result);
+}
+
+CTEST(input_test, another_input)
+{
+    char input[MAX_LEN];
+    strcpy(input, "circle(");
+
+    char inputs[1][MAX_LEN];
+    strcpy(inputs[0], input);
+
+    struct Circle circles[1];
+    int result = parser(1, inputs, circles);
+    ASSERT_EQUAL(1, result);
+}
+
+CTEST(input_test, incorrect_circle_name_input)
+{
+    char input[MAX_LEN];
+    strcpy(input, "ccle(");
+
+    char inputs[1][MAX_LEN];
+    strcpy(inputs[0], input);
+
+    struct Circle circles[1];
+    int result = parser(1, inputs, circles);
+    ASSERT_EQUAL(1, result);
 }
